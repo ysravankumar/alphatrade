@@ -166,6 +166,7 @@ class AlphaTrade(object):
         'routes': {
             'login': '/api/v2/login',
             'checktwofa': '/api/v2/checktwofa',
+            'validatetotp': '/api/v3/user/validatetotp',
             'profile': '/api/v2/profile',
             'master_contract': '/api/v2/contracts.json?exchanges={exchange}',
             'holdings': '/api/v2/holdings',
@@ -316,6 +317,9 @@ class AlphaTrade(object):
 
         self.__access_token = auth_token
         self.__headers['X-Authorization-Token'] = self.__access_token
+
+    def get_access_token(self):
+        return self.__access_token
 
     def __convert_prices(self, dictionary, multiplier):
         keys = ['ltp',
